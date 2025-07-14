@@ -1,0 +1,16 @@
+export const CATEGORIES = [
+    "Cultural",
+    "Adventure", 
+    "Historical",
+    "Culinary",
+    "Beach",
+    "Ski",
+    "Eco",
+    "Religious",
+    "Shopping",
+    "Wellness",
+    "Photography",
+    "Weekend",
+    "International",
+    "Domestic",
+  ] as const;

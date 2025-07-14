@@ -1,0 +1,151 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["driverAdapters"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Location {
+  id       Int       @id @default(autoincrement())
+  name     String
+  country  String
+  city     String
+  image    String?
+  packages Package[]
+}
+
+
+
+model Package {
+  id               Int               @id @default(autoincrement())
+  title            String
+  description      String
+  price            Float
+  duration         String
+  maxPeople        Int
+  category         Category
+  locationId       Int
+  createdAt        DateTime          @default(now())
+  updatedAt        DateTime          @updatedAt
+  popular          Boolean           @default(false)
+  salePrice        Float?
+  byBus            Boolean           @default(false)
+  byPlane          Boolean           @default(false)
+  endDate          DateTime?
+  startDate        DateTime?
+  bookings         Booking[]
+  gallery          GalleryImage[]
+  includedItems    IncludedItem[]
+  notIncludedItems NotIncludedItem[]
+  rules            Rule[]
+  location         Location          @relation(fields: [locationId], references: [id])
+  tourPlan         TourDay[]
+  dates        PackageDate[]
+}
+
+model PackageDate {
+  id         Int      @id @default(autoincrement())
+  startDate  DateTime
+  endDate    DateTime
+  maxPeople  Int      @default(1)
+  packageId  Int
+  package    Package  @relation(fields: [packageId], references: [id], onDelete: Cascade)
+
+  @@unique([startDate, packageId]) 
+}
+
+model GalleryImage {
+  id        Int      @id @default(autoincrement())
+  url       String
+  packageId Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  package   Package  @relation(fields: [packageId], references: [id], onDelete: Cascade)
+}
+
+model Booking {
+  id         Int       @id @default(autoincrement())
+  packageId  Int
+  name       String
+  email      String
+  phone      String?
+  adults     Int
+  totalPrice Float
+  discountId Int?
+  createdAt  DateTime  @default(now())
+  idNumber   String
+  endDate    DateTime
+  startDate  DateTime
+  discount   Discount? @relation(fields: [discountId], references: [id])
+  package    Package   @relation(fields: [packageId], references: [id], onDelete: Cascade)
+}
+
+model Discount {
+  id        Int       @id @default(autoincrement())
+  code      String    @unique
+  amount    Float
+  expiresAt DateTime
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  bookings  Booking[]
+}
+
+model TourDay {
+  id         Int      @id @default(autoincrement())
+  dayNumber  Int
+  title      String
+  activities String[]
+  packageId  Int
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  package    Package  @relation(fields: [packageId], references: [id], onDelete: Cascade)
+
+  @@unique([packageId, dayNumber])
+}
+
+model IncludedItem {
+  id        Int      @id @default(autoincrement())
+  text      String
+  packageId Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  package   Package  @relation(fields: [packageId], references: [id], onDelete: Cascade)
+}
+
+model NotIncludedItem {
+  id        Int      @id @default(autoincrement())
+  text      String
+  packageId Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  package   Package  @relation(fields: [packageId], references: [id], onDelete: Cascade)
+}
+
+model Rule {
+  id        Int      @id @default(autoincrement())
+  text      String
+  packageId Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  package   Package  @relation(fields: [packageId], references: [id], onDelete: Cascade)
+}
+
+enum Category {
+  Cultural
+  Adventure
+  Historical
+  Culinary
+  Beach
+  Ski
+  Eco
+  Religious
+  Shopping
+  Wellness
+  Photography
+  Weekend
+  International
+  Domestic
+}
