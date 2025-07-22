@@ -197,6 +197,7 @@ export default function ConfirmationPage() {
                     className="object-cover rounded-lg"
                     width={80}
                     height={80}
+                    unoptimized
                   />
                 )}
                 <div className="flex-1">

@@ -43,7 +43,7 @@ export default function Navbar() {
           <Link
             href="/"
             className={`mr-4 block cursor-pointer py-1.5 font-bold text-2xl transition-colors duration-300 ${
-              scrolled ? "text-white" : "text-[#EA8F03]"
+              scrolled ? "text-white" : "text-white"
             }`}
           >
             Travel

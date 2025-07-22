@@ -287,7 +287,7 @@ export default function TravelsPage() {
                   alt="placeholder"
                   fill
                   className="object-cover pointer-events-none"
-                  priority
+                  unoptimized
                 />
                 <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/50 to-black/70" />
                 <div className="absolute inset-0 bg-gradient-to-r from-black/20 via-transparent to-black/20" />
@@ -301,7 +301,8 @@ export default function TravelsPage() {
           width={100}
           height={100}
           className="absolute top-[5%] right-[8%] z-1 w-[16vw] max-w-[100px] min-w-[60px]"
-        />
+          unoptimized
+          />
       </div>
 
       <div className="pt-20 pb-16">
@@ -512,89 +513,7 @@ export default function TravelsPage() {
                   </div>
                 </div>
 
-                {/* Available Dates */}
-                <div className="mb-6">
-                  <h4 className="font-semibold text-gray-700 mb-3">
-                    {t("travels.availableDates")}
-                  </h4>
-                  <div className="space-y-2">
-                    {(() => {
-                      const availableDates = new Map<string, string>();
-
-                      packages.forEach((pkg) => {
-                        if (pkg.byBus && pkg.dates && pkg.dates.length > 0) {
-                          // For bus packages, add each date range as a label
-                          pkg.dates.forEach((date) => {
-                            const startDate = new Date(date.startDate);
-                            const endDate = new Date(date.endDate);
-                            const startStr = startDate
-                              .toISOString()
-                              .split("T")[0];
-                            const endStr = endDate.toISOString().split("T")[0];
-                            const value = `${startStr}_${endStr}`;
-                            const label = `${startDate.toLocaleDateString(
-                              "en-US",
-                              {
-                                year: "numeric",
-                                month: "short",
-                                day: "numeric",
-                              }
-                            )} – ${endDate.toLocaleDateString("en-US", {
-                              year: "numeric",
-                              month: "short",
-                              day: "numeric",
-                            })}`;
-                            availableDates.set(value, label);
-                          });
-                        } else if (
-                          pkg.byPlane &&
-                          pkg.startDate &&
-                          pkg.endDate
-                        ) {
-                          // For plane packages, add the full date range
-                          const startDate = new Date(pkg.startDate);
-                          const endDate = new Date(pkg.endDate);
-                          const startStr = startDate
-                            .toISOString()
-                            .split("T")[0];
-                          const endStr = endDate.toISOString().split("T")[0];
-                          const value = `${startStr}_${endStr}`;
-                          const label = `${startDate.toLocaleDateString(
-                            "en-US",
-                            { year: "numeric", month: "short", day: "numeric" }
-                          )} – ${endDate.toLocaleDateString("en-US", {
-                            year: "numeric",
-                            month: "short",
-                            day: "numeric",
-                          })}`;
-                          availableDates.set(value, label);
-                        }
-                      });
-
-                      return Array.from(availableDates.entries())
-                        .sort((a, b) => a[1].localeCompare(b[1]))
-                        .slice(0, 10)
-                        .map(([value, label]) => (
-                          <label
-                            key={value}
-                            className="flex items-center space-x-2 cursor-pointer"
-                          >
-                            <input
-                              type="radio"
-                              name="duration"
-                              value={value}
-                              checked={selectedDuration === value}
-                              onChange={(e) =>
-                                setSelectedDuration(e.target.value)
-                              }
-                              className="text-red-400 focus:ring-red-400"
-                            />
-                            <span className="text-gray-600">{label}</span>
-                          </label>
-                        ));
-                    })()}
-                  </div>
-                </div>
+             
 
                 <div className="mb-6">
                   <button
@@ -672,7 +591,7 @@ export default function TravelsPage() {
 
                       <div className="p-6 font-[Quicksand,sans-serif] flex flex-col flex-1">
                         <div className="flex flex-col lg:flex-row justify-between mb-3">
-                          <h3 className="text-lg font-semibold text-gray-900 mb-2 lg:mb-0">
+                          <h3 className="text-[16px] font-semibold text-gray-900 mb-2 lg:mb-0">
                             {pkg.title}
                           </h3>
                           <div className="text-right">
@@ -693,28 +612,35 @@ export default function TravelsPage() {
                           </div>
                         </div>
 
-                        <p className="text-gray-600 text-sm mb-4 line-clamp-2">
+                        <p className="text-gray-600 text-[16px] mb-4 line-clamp-2">
                           {pkg.description}
                         </p>
 
-                        <div className="flex items-center text-sm text-gray-500 mb-4">
-                          <span className="mr-4">{pkg.location.name}</span>
+                        <div className="flex  gap-6">
+                        <Image
+                                src="/icons/earth.png"
+                                alt="Bus icon"
+                                width={20}
+                                height={20}
+                                unoptimized
+                              />   
                           <span>{pkg.location.country}</span>
                         </div>
-
-                        <div className="flex items-center justify-between mt-auto">
-                          <div className="flex items-center space-x-2">
-                            <span className="text-sm text-gray-500">
-                              {pkg.byBus ? <Image src="/icons/bus.png" alt="Bus icon" width={20} height={20} /> : pkg.byPlane ? <Image src="/icons/plane.png" alt="Bus icon" width={20} height={20} /> : ""}
-                            </span>
-                          </div>
-                          <Link
-                            href={`/product/${pkg.id}`}
-                            className="w-[50%] text-[18px] font-bold  bg-[#51a9ff] cursor-pointer text-white py-2 px-4 rounded-lg  transition-colors"
-                          >
-                            {t("travels.viewDetails")}
-                          </Link>
-                        </div>
+                        <div className="flex justify-between gap-6">
+                                                        <div className="flex items-center justify-around space-x-2">
+                                                            <span className="text-[16px] text-gray-500">
+                                                            {pkg.byBus ? <Image src="/icons/bus.png" alt="Bus icon" width={20} height={20} /> : pkg.byPlane ? <Image src="/icons/plane.png" alt="Bus icon" width={20} height={20} /> : ""}
+                                                               
+                                                            </span>
+                                                        </div>
+                                                        <Link
+                                                           href={`/product/${pkg.id}`}
+                                                            className="text-[16px] font-bold text-end bg-[#51a9ff] cursor-pointer text-white py-2 px-4 rounded-lg transition-colors hover:bg-[#3a8ce6]"
+                                                        >
+                                                             {t("travels.viewDetails")}
+                                                        </Link>
+                                                    </div>
+                     
                       </div>
                     </div>
                   ))}

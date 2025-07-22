@@ -74,9 +74,9 @@ export default function TourPlanDisplay({ packageId }: TourPlanDisplayProps) {
   }
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 font-[Quicksand,sans-serif]">
       {tourDays.map((day) => (
-        <div key={day.id} className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+        <div key={day.id} className="flex font-[Quicksand,sans-serif] flex-col sm:flex-row gap-3 sm:gap-4">
           <div className="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 bg-[#ea8f03] text-white rounded-full flex items-center justify-center font-bold">
             {day.dayNumber.toString().padStart(2, '0')}
           </div>

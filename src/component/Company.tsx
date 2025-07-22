@@ -28,6 +28,7 @@ export default function Company() {
                                     width={100}
                                     height={100}
                                     src={partner.src}
+                                    unoptimized 
                                     alt={partner.alt}
                                     className="h-16 w-auto mx-auto object-contain"
                                 />
@@ -58,6 +59,7 @@ export default function Company() {
                                             fill
                                             src={partner.src}
                                             alt={partner.alt}
+                                            unoptimized
                                             className="h-full w-auto mb-10 object-contain shadow-lg"
                                         />
                                     </div>

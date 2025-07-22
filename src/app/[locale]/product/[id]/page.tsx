@@ -179,7 +179,8 @@ export default function PackageDetails() {
                   alt="placeholder"
                   fill
                   className="object-cover pointer-events-none"
-                  priority
+                  
+                  unoptimized
                 />
                 <div className="absolute inset-0 bg-black/30" />
               </div>
@@ -192,6 +193,7 @@ export default function PackageDetails() {
           width={100}
           height={100}
           className="absolute top-[5%] right-[8%] z-1 w-[16vw] max-w-[100px] min-w-[60px]"
+          unoptimized
         />
       </div>
 
@@ -209,6 +211,7 @@ export default function PackageDetails() {
                       alt={packageData.title}
                       fill
                       className="object-cover"
+                      unoptimized
                     />
                   </div>
                   <div className="p-4 font-[Quicksand,sans-serif] sm:p-6">
@@ -311,7 +314,7 @@ export default function PackageDetails() {
 
                   <div className="p-4 sm:p-6">
                     {activeTab === "overview" && (
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 font-[Quicksand,sans-serif]">
                         <div>
                           <h3 className="text-lg font-semibold mb-4">
                             {t("whatsIncluded")}
@@ -361,7 +364,7 @@ export default function PackageDetails() {
                         {rules.length > 0 ? (
                           <ul className="space-y-3">
                             {rules.map((rule) => (
-                              <li key={rule.id} className="flex items-start gap-3 p-3 bg-orange-50 border border-orange-200 rounded-lg">
+                              <li key={rule.id} className="flex font-[Quicksand,sans-serif] items-start gap-3 p-3 bg-orange-50 border border-orange-200 rounded-lg">
                                 <Shield className="w-5 h-5 text-orange-500 flex-shrink-0 mt-0.5" />
                                 <span className="text-gray-700">{rule.text}</span>
                               </li>
@@ -386,6 +389,7 @@ export default function PackageDetails() {
                                 alt={`${packageData.title} - Gallery image ${index + 1}`}
                                 fill
                                 className="object-cover hover:scale-105 transition-transform duration-300 cursor-pointer"
+                                unoptimized
                               />
                             </div>
                           ))
@@ -442,7 +446,7 @@ export default function PackageDetails() {
                       </div>
                     </div>
 
-                    <div className="space-y-1 sm:space-y-2 mb-4 sm:mb-6">
+                    <div className="space-y-1 font-[Quicksand,sans-serif] sm:space-y-2 mb-4 sm:mb-6">
                       <div className="border-t pt-2 flex justify-between font-semibold text-[16px]">
                         <span>{t("total")}: </span>
                         <span>₾{totalPrice}</span>
@@ -461,7 +465,7 @@ export default function PackageDetails() {
                   </div>
 
                   {/* Package Info */}
-                  <div className="bg-white rounded-lg shadow-lg p-4 sm:p-6">
+                  <div className="bg-white font-[Quicksand,sans-serif] rounded-lg shadow-lg p-4 sm:p-6">
                     <h3 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4">
                       {t("packageInformation")}
                     </h3>

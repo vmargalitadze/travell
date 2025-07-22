@@ -146,6 +146,7 @@ const Top: React.FC<TopProps> = () => {
                         alt={pkg.title}
                         fill
                         className="object-cover"
+                        unoptimized
                       />
                     ) : (
                       <div className="w-full h-full bg-gray-200 flex items-center justify-center">
@@ -187,10 +188,20 @@ const Top: React.FC<TopProps> = () => {
                       {pkg.description}
                     </p>
 
-                    <div className="flex items-center text-sm text-gray-500 mb-4">
-                      <span className="mr-4">{pkg.location?.name || ""}</span>
-                      <span>{pkg.location?.country || ""}</span>
-                    </div>
+                    <div className="flex items-center text-[16px] text-gray-500 mb-4 gap-2">
+                        <span className="text-xs bg-[[#EA8F03]] text-white px-2 py-1 rounded">
+                        <Image
+                                src="/icons/earth.png"
+                                alt="Bus icon"
+                                width={20}
+                                height={20}
+                                unoptimized
+                              />        
+                        </span>
+                        <span className="mr-4">
+                          {pkg.location?.name || ""}
+                        </span>
+                      </div>
 
                     <div className="flex items-center justify-between mt-auto">
                       <div className="flex items-center space-x-2">

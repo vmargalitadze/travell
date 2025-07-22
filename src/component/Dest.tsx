@@ -41,8 +41,6 @@ interface Package {
   }>;
 }
 
-
-
 function Dest() {
   const [packages, setPackages] = useState<Package[]>([]);
   const [loading, setLoading] = useState(true);
@@ -126,36 +124,47 @@ function Dest() {
                         <span className="text-gray-400">No image</span>
                       </div>
                     )}
-
                   </div>
 
-                  <div className="p-6 flex flex-col flex-1  font-[Quicksand,sans-serif]">
-                    <div className="h-[200px]">
+                  <div className="p-3 flex flex-col flex-1 font-[Quicksand,sans-serif]">
+                    <div className="flex flex-col h-full">
                       <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between mb-3">
-                        <h3 className="text-[14px] font-bold line-clamp-2 mb-5 font-semibold text-gray-900 mb-2 lg:mb-0 min-h-[40px]">
+                        <h3 className="text-[18px] font-bold line-clamp-2 mb-5  text-gray-900 lg:mb-0 min-h-[40px]">
                           {package_.title}
                         </h3>
                       </div>
 
-                      <p className="text-gray-600 text-sm mb-4 line-clamp-2">
+                      <p className="text-gray-600 text-[16px] mb-4 line-clamp-3 flex-grow">
                         {package_.description}
                       </p>
 
-                      <div className="flex items-center text-sm text-gray-500 mb-4">
+                      <div className="flex items-center text-[16px] text-gray-500 mb-4 gap-2">
+                        <span className="text-xs bg-[[#EA8F03]] text-white px-2 py-1 rounded">
+                        <Image
+                                src="/icons/earth.png"
+                                alt="Bus icon"
+                                width={20}
+                                height={20}
+                                unoptimized
+                              />        
+                        </span>
                         <span className="mr-4">
                           {package_.location?.name || ""}
                         </span>
                       </div>
 
-                      <div className="flex items-center justify-between mt-auto">
-                        <div className="flex items-center space-x-2">
-                          <span className="text-sm text-gray-500">
+                  
+
+                      <div className="flex justify-between gap-6">
+                        <div className="flex items-center justify-around space-x-2">
+                          <span className="text-[16px] text-gray-500">
                             {package_.byBus ? (
                               <Image
                                 src="/icons/bus.png"
                                 alt="Bus icon"
                                 width={20}
                                 height={20}
+                                unoptimized
                               />
                             ) : package_.byPlane ? (
                               <Image
@@ -163,6 +172,7 @@ function Dest() {
                                 alt="Plane icon"
                                 width={20}
                                 height={20}
+                                unoptimized
                               />
                             ) : (
                               ""
@@ -171,12 +181,11 @@ function Dest() {
                         </div>
                         <Link
                           href={`/product/${package_.id}`}
-                          className="w-[50%] text-[18px] font-bold bg-[#51a9ff] cursor-pointer text-white py-2 px-4 rounded-lg transition-colors"
+                          className="text-[16px] font-bold text-end bg-[#51a9ff] cursor-pointer text-white py-2 px-4 rounded-lg transition-colors hover:bg-[#3a8ce6]"
                         >
                           {t("viewDetails")}
                         </Link>
                       </div>
-
                     </div>
                   </div>
                 </div>

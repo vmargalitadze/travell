@@ -34,6 +34,7 @@ export default function TransportModes() {
                   alt="Bus Transportation"
                   fill
                   className="object-cover group-hover:scale-110 transition-transform duration-500"
+                  unoptimized
                 />
                 <div className="absolute  inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
                 <div className="absolute font-[Quicksand,sans-serif] bottom-0 left-0 right-0 p-6 text-white">
@@ -64,6 +65,7 @@ export default function TransportModes() {
                   alt="Plane Transportation"
                   fill
                   className="object-cover group-hover:scale-110 transition-transform duration-500"
+                  unoptimized
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
                 <div className="absolute font-[Quicksand,sans-serif] bottom-0 left-0 right-0 p-6 text-white">

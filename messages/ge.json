@@ -78,7 +78,7 @@
   },
   "common": {
     "welcome": "გამარჯობა",
-    "exploreNow": "აღმოაჩინეთ ახლა"
+    "exploreNow": "აღმოაჩინეთ "
   },
   "category": {
     "title": "კატეგორიები",
@@ -112,8 +112,8 @@
     "addServicePerDay": "დაამატეთ სერვისი დღეში",
     "total": "სულ",
     "checkAvailability": "შეამოწმეთ ხელმისაწვდომობა",
-    "bookNow": "დაჯავშნა ახლა",
-    "enquiryNow": "კითხვა ახლა",
+    "bookNow": "დაჯავშნა ",
+    "enquiryNow": "კითხვა ",
     "enquiryDescription": "Qui ad idque soluta deterruisset, nec sale pertinax mandamus et.",
     "enquiry": "კითხვა",
     "offerPackages": "შეთავაზების პაკეტები",
@@ -169,7 +169,7 @@
     "priceSummary": "ფასის შეჯამება",
     "adultsPrice": "ზრდასრული ({count} × ₾{price}):",
     "total": "სულ:",
-    "submitBooking": "ჯავშნის გაგზავნა",
+    "submitBooking": "დაჯავშნა",
     "submitting": "იგზავნება...",
     "pleaseSelectPackage": "გთხოვთ აირჩიოთ პაკეტი",
     "totalTravelersExceed": "სულ მოგზაური ({total}) არ შეიძლება აღემატებოდეს პაკეტის მაქსიმუმს ({max})",
@@ -235,7 +235,7 @@
     "adult": "ზრდასრული",
     "childrenLabel": "ბავშვები",
     "total": "სულ",
-    "bookNow": "დაჯავშნა ახლა",
+    "bookNow": "დაჯავშნა ",
     "processing": "მუშავდება...",
     "packageInformation": "პაკეტის ინფორმაცია",
     "category": "კატეგორია",
