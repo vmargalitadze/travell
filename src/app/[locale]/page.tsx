@@ -9,7 +9,7 @@ import Dest from "@/component/Dest";
 import Hero from "@/component/Hero";
 import Top from "@/component/Top";
 import TransportModes from "@/component/TransportModes";
-import SideLogo from "@/component/SideLogo";
+
 
 export default function Home() {
   const params = useParams();
@@ -21,6 +21,7 @@ export default function Home() {
     <>
       <Hero />
       <CompanyFilter />
+   
       <TransportModes />
       {/* <Info /> */}
 
@@ -28,7 +29,7 @@ export default function Home() {
       <Top locale={locale} />
       <Dest  />
       <Company />
-      <SideLogo />
+  
     </>
   );
 }

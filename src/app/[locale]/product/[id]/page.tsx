@@ -246,11 +246,7 @@ export default function PackageDetails() {
                           {packageData.location?.name} - {packageData.location?.city}, {packageData.location?.country}
                         </span>
                       </div>
-                      <div className="flex items-center gap-2">
-                        <span className="text-gray-600">
-                          {packageData.category}
-                        </span>
-                      </div>
+                  
                     </div>
 
                     <p className="text-gray-700 mb-4 sm:mb-6">
