@@ -27,6 +27,7 @@ export default function Navbar() {
     { name: t("travels"), href: "/travels" },
 
   ];
+console.log('a');
 
   return (
     <div>
